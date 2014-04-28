@@ -13,59 +13,70 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="container-fluid" style="margin: 20px 20px auto 20px; background-color:#FF7A00">
-    <form id="form1" runat="server" class="container-fluid ">
+<body class="container-fluid" style="margin: 20px 20px auto 20px; background-color:#FFB173;">
+    <form id="form1" runat="server">
 
         <!--Le login-->
         <%if (Session["id"] == null)
           { %>
-        <div class="dropdown">
-            <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">Navigation <span class="caret"></span>
-            </a>
-            <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-                <li role="presentation" class="dropdown-header">Naviguer</li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="Inscription.aspx">Inscription</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Changer d'avatar</a></li>
-            </ul>
+        <div class="">
+            <span class="dropdown">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Navigation <span class="caret"></span>
+                </button>
 
-            <asp:Label Text="Pseudo" runat="server" />
-            <asp:TextBox
-                runat="Server"
-                ID="txbLogin" />
+                <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                    <li role="presentation" class="dropdown-header">Naviguer</li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="Inscription.aspx">Inscription</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Changer d'avatar</a></li>
+                </ul>
+            </span>
+            
+                <asp:Label Text="Pseudo" runat="server" />
+                <asp:TextBox
+                    runat="Server"
+                    ID="txbLogin"
+                    class="" />
+            
+                <asp:Label Text="Mot de passe" runat="server" />
 
-            <asp:Label Text="Mot de passe" runat="server" />
+                <asp:TextBox
+                    runat="server"
+                    ID="txbMPasse"
+                    TextMode="Password"
+                    class="" />
 
-            <asp:TextBox
-                runat="server"
-                ID="txbMPasse"
-                TextMode="Password" />
-
-            <asp:Button
-                ID="BtnConnection"
-                runat="server"
-                Text="Connection"
-                OnClick="BtnConnection_Click"
-                CausesValidation="false" />
-            <asp:Button
-                ID="BtnInscription"
-                runat="server"
-                Text="Inscription"
-                PostBackUrl="~/Inscription.aspx"
-                CausesValidation="false" />
-
-            <asp:Label runat="server"
-                ID="lblErrorLogin"
-                Text=""
-                class="alert-danger" />
+                <asp:Button
+                    ID="BtnConnection"
+                    runat="server"
+                    Text="Connection"
+                    OnClick="BtnConnection_Click"
+                    CausesValidation="false"
+                    class="btn" />
+            
+                <asp:Button
+                    ID="BtnInscription"
+                    runat="server"
+                    Text="Inscription"
+                    PostBackUrl="~/Inscription.aspx"
+                    CausesValidation="false"
+                    class="btn" />
+            
+                <asp:Label runat="server"
+                    ID="lblErrorLogin"
+                    Text=""
+                    class="alert-danger" />
+            
         </div>
         <%}
           else
           { %>
-        <div class="dropdown">
-            <a id="A1" role="button" data-toggle="dropdown" data-target="#" href="/page.html">Navigation <span class="caret"></span>
-            </a>
+        <span class="dropdown">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Navigation <span class="caret"></span>
+            </button>
             <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                 <li role="presentation" class="dropdown-header">Naviguer</li>
                 <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Inscription</a></li>
@@ -73,6 +84,7 @@
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="changementDAvatar.aspx">Changer d'avatar</a></li>
             </ul>
+        </span>
             Vous êtes connecté en tant que
             <asp:Label
                 ID="lblUsername"
@@ -84,10 +96,11 @@
                 Text="Déconnexion"
                 OnClick="btnDeconnexion_Click"
                 CausesValidation="false"
-                CssClass="btn-warning" />
-        </div>
+                CssClass="btn-warning btn" />
+
         <%} %>
-        <div class="bg_body">
+        <br />
+        <div style="background-color:#FF9540; padding: inherit;" class="">
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
         </div>
