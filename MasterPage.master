@@ -28,7 +28,7 @@
                 <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                     <li role="presentation" class="dropdown-header">Naviguer</li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="Inscription.aspx">Inscription</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="pageActualite.aspx">Liste des nouvelles</a></li>
                     <li role="presentation" class="divider"></li>
                     <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Information personnelle</a></li>
                 </ul>
@@ -80,7 +80,7 @@
             <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
                 <li role="presentation" class="dropdown-header">Naviguer</li>
                 <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Inscription</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="pageActualite.aspx">Liste des nouvelles</a></li>
                 <li role="presentation" class="divider"></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="InfoPerso.aspx">Information personnelle</a></li>
             </ul>
