@@ -6,11 +6,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
 
-    <div>
-        <asp:Label runat="server" class="alert-success" ID="lblsuccess" />
+     <div>
+        <label class="alert-success" style="display:none">L'incription c'est bien effectué</label>
     </div>
     <div>
-        <asp:Label Text="* Ces champs sont obligatoires" runat="server" class="alert-warning" />
+        <asp:Label Text="* Ces champs sont obligatoires" runat="server" class="alert-warning"/>
     </div>
 
     <div>

@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Configuration;
 using System.Data.OleDb;
+using System.Configuration;
+using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 
 public partial class Default2 : System.Web.UI.Page
@@ -22,48 +23,43 @@ public partial class Default2 : System.Web.UI.Page
 
             rdmSel.GetBytes(tabSels);  //Creation du sel aléatoire
 
+
             Rfc2898DeriveBytes hash = new Rfc2898DeriveBytes(mdp, tabSels, 1000);
 
             byte[] password = hash.GetBytes(24);  //Obtention du mot de passe crypté
-
-            //INSCRIPTION
-            //Store le mdp hashé
-            //Store le sel
-
-            //CONNECTION
-            //Hasher le mdp entré avec le sel de la bd
-            //Comparer le mdp hashé avec celui de la bd
-
+            
             OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
             connection.Open();
 
             OleDbCommand command = new OleDbCommand(" SELECT Count(nom_utilisateur) FROM Utilisateurs WHERE nom_utilisateur = @userName;", connection);
-            command.Parameters.Add(new OleDbParameter("userName", userName) { OleDbType = OleDbType.VarChar, Size = 255 });
+            command.Parameters.Add(new OleDbParameter("userName", userName) {OleDbType = OleDbType.VarChar, Size = 255 });
             command.Prepare();
 
             if ((int)command.ExecuteScalar() < 1)
             {
-                string passWord = password.ToString();
                 string image = "";
                 if (fileUpload.HasFile)
                 {
-                    fileUpload.SaveAs(userName + System.IO.Path.GetExtension(fileUpload.FileName));
                     image = userName + System.IO.Path.GetExtension(fileUpload.FileName);
+                    fileUpload.SaveAs(Server.MapPath("assets/image/" + image));
                 }
 
-                command = new OleDbCommand("INSERT INTO Utilisateurs VALUES (@userName,@password, @image)", connection);
+                command = new OleDbCommand("INSERT INTO Utilisateurs (nom_utilisateur, mot_de_passe, nom_fichier_avatar, sel) VALUES (@userName,@password, @image, @sel)", connection);
                 command.Parameters.Add(new OleDbParameter("userName", userName) { OleDbType = OleDbType.VarChar, Size = 255 });
-                command.Parameters.Add(new OleDbParameter("password", passWord) { OleDbType = OleDbType.VarChar, Size = 255 });
+                command.Parameters.Add(new OleDbParameter("password", password) { OleDbType = OleDbType.VarBinary, Size = 255 });
                 command.Parameters.Add(new OleDbParameter("image", image) { OleDbType = OleDbType.VarChar, Size = 255 });
+                command.Parameters.Add(new OleDbParameter("sel", tabSels) { OleDbType = OleDbType.VarBinary, Size = 255 });
                 command.Prepare();
                 command.ExecuteNonQuery();
             }
 
+            
+
+            
             connection.Close();
-            lblsuccess.Text = "L'incription c'est bien effectué";
+            Server.Transfer("Default.aspx");
         }
     }
-
     protected void imageValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
     {
         if (fileUpload.HasFile)
@@ -80,6 +76,7 @@ public partial class Default2 : System.Web.UI.Page
             {
                 args.IsValid = false;
             }
+            
         }
     }
 }
