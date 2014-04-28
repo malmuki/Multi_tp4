@@ -18,7 +18,11 @@
       { %>
     <div>
 
+        <asp:Label Text="" runat="server" ID="lblModoOuAdmin"/>
+
         <asp:Label Text="" runat="server" ID="lblsucces" CssClass="label-success" />
+
+        <asp:Image ImageUrl="#" runat="server" />
 
         <asp:FileUpload
             runat="server"
@@ -32,7 +36,7 @@
         <asp:CustomValidator
             runat="server"
             ID="imageValidator"
-            ErrorMessage="l'image n'est pas valide"
+            ErrorMessage="l'image est trop grande ou invalide(max de 180px par 180px)"
             ControlToValidate="fileUpload1"
             OnServerValidate="imageValidator_ServerValidate"
             class="alert-danger"> </asp:CustomValidator>

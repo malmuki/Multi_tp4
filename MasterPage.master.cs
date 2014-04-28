@@ -6,7 +6,7 @@ using System.Linq;
 
 public partial class MasterPage : System.Web.UI.MasterPage
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_prerender(object sender, EventArgs e)
     {
         if (Session["id"] != null)
         {
@@ -28,6 +28,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 {
                     imgAvatar.ImageUrl = "~/assets/image/" + (string)datareader[0];
                 }
+                imgAvatar.Width = 50;
+                imgAvatar.Height = 50;
             }
         }
     }
