@@ -30,7 +30,7 @@
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="Inscription.aspx">Inscription</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
                     <li role="presentation" class="divider"></li>
-                    <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Changer d'avatar</a></li>
+                    <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Information personnelle</a></li>
                 </ul>
             </span>
             
@@ -82,7 +82,7 @@
                 <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Inscription</a></li>
                 <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
                 <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="changementDAvatar.aspx">Changer d'avatar</a></li>
+                <li role="presentation"><a role="menuitem" tabindex="-1" href="InfoPerso.aspx">Information personnelle</a></li>
             </ul>
         </span>
             Vous êtes connecté en tant que

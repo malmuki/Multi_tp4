@@ -1,14 +1,13 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="changementDAvatar.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="InfoPerso.aspx.cs" Inherits="Default2" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <title>Changement d'avatar</title>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
 
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
     <%if (Session["id"] == null)
       { %>
     <label>veullier vous connecter pour contiuer</label>
-    <asp:LinkButton
+    <asp:LinkButton ID="LinkButton1"
         runat="server"
         Text="Redirection"
         PostBackUrl="~/Default.aspx"
@@ -24,12 +23,11 @@
         <asp:FileUpload
             runat="server"
             ID="fileUpload1" />
-        <asp:RequiredFieldValidator
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
             runat="Server"
             ControlToValidate="fileUpload1"
             ErrorMessage="l'image est requise"
-            class="alert-danger">
-        </asp:RequiredFieldValidator>
+            class="alert-danger"> </asp:RequiredFieldValidator>
 
         <asp:CustomValidator
             runat="server"
@@ -37,14 +35,16 @@
             ErrorMessage="l'image n'est pas valide"
             ControlToValidate="fileUpload1"
             OnServerValidate="imageValidator_ServerValidate"
-            class="alert-danger">
-        </asp:CustomValidator>
+            class="alert-danger"> </asp:CustomValidator>
         <br />
-        <asp:Button
+        <asp:Button ID="Button1"
             runat="server"
             OnClick="btnImage_Click"
-            Text="Modifier l'avatar" />
+            Text="Modifier l'avatar"
+            class="btn" />
     </div>
 
     <%} %>
+
 </asp:Content>
+
