@@ -11,13 +11,9 @@ html {
       -ms-text-size-adjust: 100%;
 }
 .bg_body {
-    background-color:#FFAE00;
+    background-color:#FF9000;
 }
 
-body {
-  margin: 20px 20px auto 20px; 
-  background-color:#FF7A00;
-}
 article,
 aside,
 details,
@@ -283,6 +279,8 @@ body {
   line-height: 1.428571429;
   color: #333;
   background-color: #fff;
+  margin:0px;
+  padding:0px;
 }
 input,
 button,
