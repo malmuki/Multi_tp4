@@ -9,98 +9,103 @@
     <script src="assets/bootstrap.js"></script>
     <link href="assets/bootstrap.css" rel="stylesheet" />
     <script src="assets/script.js"></script>
-    <title></title>
+    <title>The Weak End</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body class="container-fluid" style="margin: 20px 20px auto 20px; background-color:#FFB173;">
+<body style="background-color: #36BBCE;">
     <form id="form1" runat="server">
+        <div style="background-color: #FF9F00;">
+            <div style="margin: 0px 20px 0px 20px; padding: 10px">
+                <!--Le login-->
+                <%if (Session["id"] == null)
+                  { %>
+                <div class="form-inline">
+                    <span class="dropdown">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            Navigation <span class="caret"></span>
+                        </button>
 
-        <!--Le login-->
-        <%if (Session["id"] == null)
-          { %>
-        <div class="">
-            <span class="dropdown">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Navigation <span class="caret"></span>
-                </button>
+                        <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                            <li role="presentation" class="dropdown-header">Naviguer</li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="Inscription.aspx">Inscription</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Information personnelle</a></li>
+                        </ul>
+                    </span>
 
-                <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-                    <li role="presentation" class="dropdown-header">Naviguer</li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="Inscription.aspx">Inscription</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="pageActualite.aspx">Liste des nouvelles</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Information personnelle</a></li>
-                </ul>
-            </span>
-            
-                <asp:Label Text="Pseudo" runat="server" />
-                <asp:TextBox
-                    runat="Server"
-                    ID="txbLogin"
-                    class="" />
-            
-                <asp:Label Text="Mot de passe" runat="server" />
+                        <asp:Label Text="Pseudo" runat="server" />
 
-                <asp:TextBox
-                    runat="server"
-                    ID="txbMPasse"
-                    TextMode="Password"
-                    class="" />
+                        <div class="form-group">
+                            <asp:TextBox
+                                runat="Server"
+                                ID="txbLogin"
+                                class="form-control" />
+                        </div>
 
-                <asp:Button
-                    ID="BtnConnection"
-                    runat="server"
-                    Text="Connection"
-                    OnClick="BtnConnection_Click"
-                    CausesValidation="false"
-                    class="btn" />
-            
-                <asp:Button
-                    ID="BtnInscription"
-                    runat="server"
-                    Text="Inscription"
-                    PostBackUrl="~/Inscription.aspx"
-                    CausesValidation="false"
-                    class="btn" />
-            
-                <asp:Label runat="server"
-                    ID="lblErrorLogin"
-                    Text=""
-                    class="alert-danger" />
-            
-        </div>
-        <%}
-          else
-          { %>
-        <span class="dropdown">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    Navigation <span class="caret"></span>
-            </button>
-            <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
-                <li role="presentation" class="dropdown-header">Naviguer</li>
-                <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Inscription</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="pageActualite.aspx">Liste des nouvelles</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="InfoPerso.aspx">Information personnelle</a></li>
-            </ul>
-        </span>
-            Vous êtes connecté en tant que
+                        <asp:Label Text="Mot de passe" runat="server" />
+                        <div class="form-group">
+                            <asp:TextBox
+                                runat="server"
+                                ID="txbMPasse"
+                                TextMode="Password"
+                                class="form-control"/>
+                        </div>
+                        <asp:Button
+                            ID="BtnConnection"
+                            runat="server"
+                            Text="Connection"
+                            OnClick="BtnConnection_Click"
+                            CausesValidation="false"
+                            class="btn btn" />
+
+                        <asp:Button
+                            ID="BtnInscription"
+                            runat="server"
+                            Text="Inscription"
+                            PostBackUrl="~/Inscription.aspx"
+                            CausesValidation="false"
+                            class="btn" />
+
+                        <asp:Label runat="server"
+                            ID="lblErrorLogin"
+                            Text=""
+                            class="alert-danger" />
+                    </div>
+                <%}
+                  else
+                  { %>
+                <span class="dropdown">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        Navigation <span class="caret"></span>
+                    </button>
+                    <ul class=" dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                        <li role="presentation" class="dropdown-header">Naviguer</li>
+                        <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Inscription</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des nouvelles</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="InfoPerso.aspx">Information personnelle</a></li>
+                    </ul>
+                </span>
+                Vous êtes connecté en tant que
             <asp:Label
                 ID="lblUsername"
                 runat="server" />
-            <asp:Image ImageUrl="#" runat="server" ID="imgAvatar" />
-            <asp:Button
-                ID="btnDeconnexion"
-                runat="server"
-                Text="Déconnexion"
-                OnClick="btnDeconnexion_Click"
-                CausesValidation="false"
-                CssClass="btn-warning btn" />
+                <asp:Image ImageUrl="#" runat="server" ID="imgAvatar" />
+                <asp:Button
+                    ID="btnDeconnexion"
+                    runat="server"
+                    Text="Déconnexion"
+                    OnClick="btnDeconnexion_Click"
+                    CausesValidation="false"
+                    CssClass="btn" />
 
-        <%} %>
+                <%} %>
+            </div>
+        </div>
         <br />
-        <div style="background-color:#FF9540; padding: inherit;" class="">
+        <div style="padding: 20px; margin: 0px 20px 10px 20px; background-color: #fff;">
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
         </div>
