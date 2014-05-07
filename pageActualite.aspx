@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
     <h1>NEWS!</h1>
-    <asp:Table runat="server" ID="tableActualite" Width="1024">
+    <asp:Table runat="server" ID="tableActualite" Width="1024" class="tableMessage maxWight">
         <asp:TableHeaderRow>
             <asp:TableHeaderCell Width="20%">Auteur</asp:TableHeaderCell>
             <asp:TableHeaderCell Width="60%">Message</asp:TableHeaderCell>

@@ -22,14 +22,13 @@ public partial class pageActualite : System.Web.UI.Page
         {
             TableRow tableRow = new TableRow();
             TableCell userCell = new TableCell();
-            HtmlGenericControl imgDiv = new HtmlGenericControl("div");
-            HtmlGenericControl pseudoDiv = new HtmlGenericControl("div");
+            HtmlGenericControl imgDiv = new HtmlGenericControl("span");
+            HtmlGenericControl pseudoDiv = new HtmlGenericControl("h3");
 
             Image avatar = new Image();
             avatar.ImageUrl = "~/assets/image/" + (string)datareader[3];
             imgDiv.Controls.Add(avatar);
             pseudoDiv.InnerText = (string)datareader[2];
-            pseudoDiv.Style.Value = "text-indent:58px; font-weight:bold;";
             userCell.Controls.Add(imgDiv);
             userCell.Controls.Add(pseudoDiv);
 
