@@ -77,6 +77,8 @@
     </div>
 
     <div>
+         <asp:Label runat="server" ID="Label1">Avatar</asp:Label>
+
         <asp:FileUpload
             runat="server"
             ID="fileUpload" />

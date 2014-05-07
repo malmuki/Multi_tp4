@@ -9,11 +9,11 @@
     <!--Le Forum-->
     <div>
 
-        <asp:Table runat="server" ID="menuSujet">
+        <asp:Table runat="server" ID="menuSujet" Width="1024">
             <asp:TableHeaderRow>
-                <asp:TableHeaderCell>Auteur</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Sujet</asp:TableHeaderCell>
-                <asp:TableHeaderCell>Date de creation</asp:TableHeaderCell>
+                <asp:TableHeaderCell Width="20%">Auteur</asp:TableHeaderCell>
+                <asp:TableHeaderCell Width="60%">Sujet</asp:TableHeaderCell>
+                <asp:TableHeaderCell Width="20%">Date de creation</asp:TableHeaderCell>
             </asp:TableHeaderRow>
         </asp:Table>
 
@@ -30,7 +30,7 @@
             runat="server"
             ControlToValidate="txbTitre"
             Display="Static"
-            ErrorMessage="Vous devez specifier un titre au post.">
+            ErrorMessage="*Vous devez entrer un titre">
         </asp:RequiredFieldValidator><br />
 
         <label id="lblMessage">Message</label>
@@ -40,11 +40,11 @@
             runat="server"
             ControlToValidate="txtMessage"
             Display="Static"
-            ErrorMessage="Vous devez specifier un message au post.">
+            ErrorMessage="Vous devez entrer un message">
         </asp:RequiredFieldValidator>
         <br />
         <asp:Button
-            Text="Debuter un sujet"
+            Text="Envoyer"
             runat="server"
             ID="btnSujet"
             OnClick="btnSujet_Click" />

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.OleDb;
 using System.Configuration;
@@ -49,14 +45,21 @@ public partial class pageActualite : System.Web.UI.Page
          OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
         connection.Open();
 
-        OleDbCommand command = new OleDbCommand("SELECT moderateur FROM Utilisateur WHERE nom_utilisateur="+Session["id"], connection);
-        OleDbDataReader datareader = command.ExecuteReader();
+        OleDbCommand command = new OleDbCommand("SELECT moderateur FROM Utilisateurs WHERE nom_utilisateur='"+(string)Session["id"]+"';", connection);
+       OleDbDataReader datareader = command.ExecuteReader();
 
-        return (bool)datareader[0];
+       if (datareader.Read())
+       {
+           return (bool) datareader[0];
+       }
+       else
+       {
+           return false;
+       }
     }
    protected void btnEnvoyerMessage_Click(object sender, EventArgs e)
    {
-       OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["database"].ConnectionString);
+       OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
         connection.Open();
 
         OleDbCommand command = new OleDbCommand("INSERT INTO messages (sujet, auteur, date_ecriture, message) VALUES (@sujet, @auteur, @date, @message)", connection);
