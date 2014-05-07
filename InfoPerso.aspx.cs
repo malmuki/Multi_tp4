@@ -4,29 +4,12 @@ using System.Data.OleDb;
 
 public partial class Default2 : System.Web.UI.Page
 {
-    protected void Page_prerender(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["id"] != null)
         {
-            lblUsername.Text = "Votre nom est : " + (string)Session["id"];
 
-            OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
-            connection.Open();
 
-            OleDbCommand command = new OleDbCommand("SELECT nom_fichier_avatar FROM Utilisateurs WHERE nom_utilisateur =@id", connection);
-            command.Parameters.Add(new OleDbParameter("id", Session["id"].ToString()) { OleDbType = OleDbType.VarChar, Size = 255 });
-            OleDbDataReader datareader = command.ExecuteReader();
-            if (datareader.Read())
-            {
-                if (datareader.IsDBNull(0) || string.IsNullOrEmpty((string)datareader[0]))
-                {
-                    imgAvatar.ImageUrl = "~/assets/image/avatar.jpg";
-                }
-                else
-                {
-                    imgAvatar.ImageUrl = "~/assets/image/" + (string)datareader[0];
-                }
-            }
         }
     }
     protected void imageValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
