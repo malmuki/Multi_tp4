@@ -26,9 +26,10 @@ public partial class pageActualite : System.Web.UI.Page
             HtmlGenericControl pseudoDiv = new HtmlGenericControl("div");
 
             Image avatar = new Image();
-            avatar.ImageUrl = "~/App_Data/image/" + (string)datareader[3];
+            avatar.ImageUrl = "~/assets/image/" + (string)datareader[3];
             imgDiv.Controls.Add(avatar);
             pseudoDiv.InnerText = (string)datareader[2];
+            pseudoDiv.Style.Value = "text-indent:58px; font-weight:bold;";
             userCell.Controls.Add(imgDiv);
             userCell.Controls.Add(pseudoDiv);
 
