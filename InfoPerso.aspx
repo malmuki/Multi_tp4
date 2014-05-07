@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="InfoPerso.aspx.cs" Inherits="Default2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <title>Information Personnelle</title>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
@@ -18,19 +19,22 @@
       { %>
     <div>
 
+        <asp:Label Text="" runat="server" ID="lblUsername"/>
+
         <asp:Label Text="" runat="server" ID="lblModoOuAdmin"/>
 
         <asp:Label Text="" runat="server" ID="lblsucces" CssClass="label-success" />
 
-        <asp:Image ImageUrl="#" runat="server" />
+        <asp:Image ImageUrl="#" runat="server" ID="imgAvatar" class="pull-right"/>
 
         <asp:FileUpload
             runat="server"
             ID="fileUpload1" />
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
+        <asp:RequiredFieldValidator 
+            ID="RequiredFieldValidator1"
             runat="Server"
             ControlToValidate="fileUpload1"
-            ErrorMessage="l'image est requise"
+            ErrorMessage="l'image est requise pour faire un changement"
             class="alert-danger"> </asp:RequiredFieldValidator>
 
         <asp:CustomValidator
