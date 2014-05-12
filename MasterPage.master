@@ -87,7 +87,10 @@
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="pageActualite.aspx">Liste des nouvelles</a></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des sujets</a></li>
                         <li role="presentation" class="divider"></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="InfoPerso.aspx">Information personnelle</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="InfoPerso.aspx">Informations personnelles</a></li>
+                         <%if(IsAdministrator()){%>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="PageAdmin.aspx">Page d'administration</a></li>
+                        <%} %>
                     </ul>
                 </span>
                 Vous êtes connecté en tant que

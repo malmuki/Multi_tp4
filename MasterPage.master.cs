@@ -73,4 +73,24 @@ public partial class MasterPage : System.Web.UI.MasterPage
             lblErrorLogin.Text = "Cet identifiant/mot de passe est incorrect";
         }
     }
+    public bool IsAdministrator()
+    {
+        OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
+        connection.Open();
+
+        OleDbCommand command = new OleDbCommand("SELECT administrateur FROM Utilisateurs WHERE nom_utilisateur = @sessionID", connection);
+        command.Parameters.Add(new OleDbParameter("sessionID", (string)Session["id"]) { OleDbType = OleDbType.VarChar, Size = 255 });
+        OleDbDataReader datareader = command.ExecuteReader();
+
+        if (datareader.Read())
+        {
+            return (bool)datareader[0];
+        }
+        else
+        {
+            return false;
+        }
+        
+    }
+
 }
