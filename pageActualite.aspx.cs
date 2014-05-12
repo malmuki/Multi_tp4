@@ -29,6 +29,7 @@ public partial class pageActualite : System.Web.UI.Page
             avatar.ImageUrl = "~/assets/image/" + (string)datareader[3];
             imgDiv.Controls.Add(avatar);
             pseudoDiv.InnerText = (string)datareader[2];
+            pseudoDiv.Style.Add("text-align","center");
             userCell.Controls.Add(imgDiv);
             userCell.Controls.Add(pseudoDiv);
 
@@ -88,5 +89,6 @@ public partial class pageActualite : System.Web.UI.Page
 
         command.ExecuteNonQuery();
         connection.Close();
+       Response.Redirect("pageActualite.aspx");
    }
 }

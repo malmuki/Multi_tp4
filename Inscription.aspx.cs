@@ -14,7 +14,7 @@ public partial class Default2 : System.Web.UI.Page
         if (this.IsValid)
         {
             string userName = txbPseudo.Text;
-
+            string courriel = txbEmail.Text;
             string mdp = txbMPasse.Text;  //TextBox du mot de passe
             byte[] tabSels = new byte[24];  //Tableau pour le sel
 
@@ -43,12 +43,12 @@ public partial class Default2 : System.Web.UI.Page
                     fileUpload.SaveAs(Server.MapPath("assets/image/" + image));
                 }
 
-                command = new OleDbCommand("INSERT INTO Utilisateurs (nom_utilisateur, mot_de_passe, nom_fichier_avatar, sel) VALUES (@userName,@password, @image, @sel)", connection);
+                command = new OleDbCommand("INSERT INTO Utilisateurs (nom_utilisateur, mot_de_passe, nom_fichier_avatar, sel, courriel) VALUES (@userName,@password, @image, @sel, @courriel)", connection);
                 command.Parameters.Add(new OleDbParameter("userName", userName) { OleDbType = OleDbType.VarChar, Size = 255 });
                 command.Parameters.Add(new OleDbParameter("password", password) { OleDbType = OleDbType.VarBinary, Size = 255 });
                 command.Parameters.Add(new OleDbParameter("image", image) { OleDbType = OleDbType.VarChar, Size = 255 });
                 command.Parameters.Add(new OleDbParameter("sel", tabSels) { OleDbType = OleDbType.VarBinary, Size = 255 });
-                command.Prepare();
+                command.Parameters.Add(new OleDbParameter("courriel", courriel) { OleDbType = OleDbType.VarChar, Size = 255 });
                 command.ExecuteNonQuery();
             }
 

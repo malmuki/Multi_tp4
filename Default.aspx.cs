@@ -24,8 +24,9 @@ public partial class _Default : System.Web.UI.Page
             titreLink.PostBackUrl = "~/forum.aspx?ID=" + (datareader.IsDBNull(3) ? "" : (datareader[3].ToString()));
             titreCell.Controls.Add(titreLink);
 
-            tableRow.Cells.Add(titreCell);
+
             tableRow.Cells.Add(new TableCell() { Text = datareader.IsDBNull(1) ? "" : ((string)datareader[1]) });
+            tableRow.Cells.Add(titreCell);
             tableRow.Cells.Add(new TableCell() { Text = datareader.IsDBNull(2) ? "" : ((DateTime)datareader[2]).ToLongTimeString() });
             menuSujet.Rows.Add(tableRow);
         }
@@ -48,13 +49,16 @@ public partial class _Default : System.Web.UI.Page
 
             command.ExecuteNonQuery();
 
+            OleDbCommand identityCommand = new OleDbCommand("SELECT @@Identity;", connection);
+            int identity = (int)identityCommand.ExecuteScalar();
+
             command = new OleDbCommand("SELECT ID FROM sujet WHERE auteur=@auteur AND date_creation=@date", connection);
             command.Parameters.Add(new OleDbParameter("auteur", Session["id"].ToString()) { OleDbType = OleDbType.VarChar, Size = 255 });
             command.Parameters.Add(new OleDbParameter("date", DateTime.Now) { OleDbType = OleDbType.VarChar, Size = 255 });
             command.Prepare();
             OleDbDataReader datareader = command.ExecuteReader();
 
-             
+
             int sujet = 1;
             if (datareader.Read())
             {
@@ -70,7 +74,11 @@ public partial class _Default : System.Web.UI.Page
 
             command.ExecuteNonQuery();
 
+
+
             connection.Close();
+
+            Response.Redirect("forum.aspx?ID=" + identity);
         }
     }
 }
