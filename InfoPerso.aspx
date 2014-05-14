@@ -21,7 +21,13 @@
 
         <asp:Label Text="" runat="server" ID="lblUsername"/>
 
+        <br />
+
+        <asp:Label Text="" runat="server" id="lblEmail"/>
+
         <asp:Label Text="" runat="server" ID="lblModoOuAdmin"/>
+
+        <br />
 
         <asp:Label Text="" runat="server" ID="lblsucces" CssClass="label-success" />
 

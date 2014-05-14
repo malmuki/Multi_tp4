@@ -8,12 +8,12 @@ public partial class Default2 : System.Web.UI.Page
     {
         if (Session["id"] != null)
         {
-            lblUsername.Text = "Votre nom est : " + (string)Session["id"];
+            lblUsername.Text = "Votre pseudo est : " + (string)Session["id"];
 
             OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
             connection.Open();
 
-            OleDbCommand command = new OleDbCommand("SELECT nom_fichier_avatar FROM Utilisateurs WHERE nom_utilisateur =@id", connection);
+            OleDbCommand command = new OleDbCommand("SELECT nom_fichier_avatar, courriel FROM Utilisateurs WHERE nom_utilisateur =@id", connection);
             command.Parameters.Add(new OleDbParameter("id", Session["id"].ToString()) { OleDbType = OleDbType.VarChar, Size = 255 });
             OleDbDataReader datareader = command.ExecuteReader();
             if (datareader.Read())
@@ -26,6 +26,8 @@ public partial class Default2 : System.Web.UI.Page
                 {
                     imgAvatar.ImageUrl = "~/assets/image/" + (string)datareader[0];
                 }
+
+                lblEmail.Text = "Votre Email est: " + (string)datareader[1];
             }
         }
     }
