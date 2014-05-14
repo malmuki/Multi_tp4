@@ -45,7 +45,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         connection.Open();
 
 
-        OleDbCommand command = new OleDbCommand("SELECT mot_de_passe, sel FROM Utilisateurs WHERE nom_utilisateur = @txbLogin", connection);
+        OleDbCommand command = new OleDbCommand("SELECT mot_de_passe, sel, banni FROM Utilisateurs WHERE nom_utilisateur = @txbLogin", connection);
         command.Parameters.Add(new OleDbParameter("txbLogin", txbLogin.Text) { OleDbType = OleDbType.VarChar, Size = 255 });
         OleDbDataReader datareader = command.ExecuteReader();
 
@@ -68,6 +68,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
                 lblErrorLogin.Text = "Cet identifiant/mot de passe est incorrect";
             }
         }
+        else if(!(bool)datareader[2])
+            {
+                lblErrorLogin.Text = "Cet utilisateur est banni du forum";
+            }
         else
         {
             lblErrorLogin.Text = "Cet identifiant/mot de passe est incorrect";

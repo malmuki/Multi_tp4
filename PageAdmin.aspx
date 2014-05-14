@@ -10,6 +10,7 @@
             <asp:BoundField DataField="nom_fichier_avatar" HeaderText="nom_fichier_avatar" SortExpression="nom_fichier_avatar"></asp:BoundField>
             <asp:CheckBoxField DataField="moderateur" HeaderText="moderateur" SortExpression="moderateur"></asp:CheckBoxField>
             <asp:CheckBoxField DataField="administrateur" HeaderText="administrateur" SortExpression="administrateur"></asp:CheckBoxField>
+            <asp:CheckBoxField DataField="banni" HeaderText="banni" SortExpression="banni"></asp:CheckBoxField>
         </Columns>
     </asp:GridView>
 
@@ -24,6 +25,7 @@
             <asp:Parameter Name="sel" Type="Object"></asp:Parameter>
             <asp:Parameter Name="moderateur" Type="Boolean"></asp:Parameter>
             <asp:Parameter Name="administrateur" Type="Boolean"></asp:Parameter>
+            <asp:Parameter Name="banni" Type="Boolean"></asp:Parameter>
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="mot_de_passe" Type="Object"></asp:Parameter>
@@ -32,6 +34,7 @@
             <asp:Parameter Name="moderateur" Type="Boolean"></asp:Parameter>
             <asp:Parameter Name="administrateur" Type="Boolean"></asp:Parameter>
             <asp:Parameter Name="nom_utilisateur" Type="String"></asp:Parameter>
+            <asp:Parameter Name="banni" Type="Boolean"></asp:Parameter>
         </UpdateParameters>
     </asp:SqlDataSource>
 
