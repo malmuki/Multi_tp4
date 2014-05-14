@@ -13,10 +13,10 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style="background-color: #36BBCE;">
+<body class="body">
     <form id="form1" runat="server">
-        <div style="background-color: #FF9F00;">
-            <div style="margin: 0px 20px 0px 20px; padding: 10px">
+        <div class="header1">
+            <div class="header2">
                 <!--Le login-->
                 <%if (Session["id"] == null)
                   { %>
@@ -110,7 +110,7 @@
             </div>
         </div>
         <br />
-        <div style="padding: 20px; margin: 0px 20px 10px 20px; background-color: #fff;">
+        <div style="" class="content">
             <asp:ContentPlaceHolder ID="body" runat="server">
             </asp:ContentPlaceHolder>
         </div>

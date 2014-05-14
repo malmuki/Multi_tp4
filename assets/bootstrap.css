@@ -34,12 +34,24 @@ html {
     text-align: center;
 }
 
-.usernameLabel {
+.body{
+    margin: 20px 20px auto 20px;
+    background-color: #36BBCE;
 }
 
-body {
-    margin: 20px 20px auto 20px;
-    background-color: #FF7A00;
+.header1 {
+    background-color: #FF9F00;
+}
+
+.header2 {
+    margin: 0px 20px 0px 20px; 
+    padding: 10px;
+}
+
+.content {
+    padding: 20px;
+     margin: 0px 20px 10px 20px;
+    background-color: #fff;
 }
 
 article,
