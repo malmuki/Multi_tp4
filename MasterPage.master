@@ -88,7 +88,8 @@
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="Default.aspx">Liste des sujets</a></li>
                         <li role="presentation" class="divider"></li>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="InfoPerso.aspx">Informations personnelles</a></li>
-                         <%if(IsAdministrator()){%>
+                        <%if (IsAdministrator())
+                          {%>
                         <li role="presentation"><a role="menuitem" tabindex="-1" href="PageAdmin.aspx">Page d'administration</a></li>
                         <%} %>
                     </ul>

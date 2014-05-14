@@ -16,7 +16,7 @@
                 <asp:TableHeaderCell Width="15%">Date de creation</asp:TableHeaderCell>
             </asp:TableHeaderRow>
         </asp:Table>
-        <br/>
+        <br />
 
         <%if (Session["id"] != null)
           { %>
@@ -41,7 +41,6 @@
                         ErrorMessage="*Vous devez entrer un titre">
                     </asp:RequiredFieldValidator>
                 </asp:TableCell>
-
             </asp:TableRow>
             <asp:TableRow ID="TableRow1" runat="server">
                 <asp:TableCell ID="TableCell3" runat="server" HorizontalAlign="Right" VerticalAlign="Middle">
@@ -59,7 +58,6 @@
                         ErrorMessage="*Vous devez entrer un message">
                     </asp:RequiredFieldValidator>
                 </asp:TableCell>
-
             </asp:TableRow>
 
             <asp:TableRow runat="server">

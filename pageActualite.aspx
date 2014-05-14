@@ -11,14 +11,13 @@
             <asp:TableHeaderCell Width="15%">Date de creation</asp:TableHeaderCell>
         </asp:TableHeaderRow>
     </asp:Table>
-    <br/>
+    <br />
 
     <%if (Session["id"] != null && IsModerator())
       {%>
-    <div style="text-align: center" Width="100%">
+    <div style="text-align: center" width="100%">
         <asp:TextBox TextMode="MultiLine" runat="server" Width="70%" Height="100" ID="txtActualite" CssClass="center"></asp:TextBox><br />
         <asp:Button runat="server" ID="btnEnvoyerMessage" Text="Envoyer" Width="70%" OnClick="btnEnvoyerMessage_Click" />
     </div>
     <%}%>
 </asp:Content>
-

@@ -32,7 +32,7 @@ public partial class forum : System.Web.UI.Page
             }
 
             command = new OleDbCommand("SELECT lock, titre FROM sujet WHERE ID=@id ", connection);
-            command.Parameters.Add(new OleDbParameter("id",ID) { OleDbType = OleDbType.VarChar, Size = 255 });
+            command.Parameters.Add(new OleDbParameter("id", ID) { OleDbType = OleDbType.VarChar, Size = 255 });
             datareader = command.ExecuteReader();
 
             if (datareader.Read())
@@ -135,17 +135,13 @@ public partial class forum : System.Web.UI.Page
 
             OleDbCommand command = new OleDbCommand("INSERT INTO messages (sujet, auteur, date_ecriture, message) VALUES (@sujet, @auteur, @date, @message)", connection);
 
-            command.Parameters.Add(new OleDbParameter("sujet", int.Parse(Request["ID"]))
-            { OleDbType = OleDbType.Integer});
+            command.Parameters.Add(new OleDbParameter("sujet", int.Parse(Request["ID"])) { OleDbType = OleDbType.Integer });
 
-            command.Parameters.Add(new OleDbParameter("auteur", Session["id"])
-            { OleDbType = OleDbType.VarChar, Size = 255 });
+            command.Parameters.Add(new OleDbParameter("auteur", Session["id"]) { OleDbType = OleDbType.VarChar, Size = 255 });
 
-            command.Parameters.Add(new OleDbParameter("date", DateTime.Now)
-            { OleDbType = OleDbType.Date});
+            command.Parameters.Add(new OleDbParameter("date", DateTime.Now) { OleDbType = OleDbType.Date });
 
-            command.Parameters.Add(new OleDbParameter("message", txtReponseMessage.Text)
-            { OleDbType = OleDbType.VarChar, Size = 255 });
+            command.Parameters.Add(new OleDbParameter("message", txtReponseMessage.Text) { OleDbType = OleDbType.VarChar, Size = 255 });
 
             command.ExecuteNonQuery();
             connection.Close();

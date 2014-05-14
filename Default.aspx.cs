@@ -24,7 +24,6 @@ public partial class _Default : System.Web.UI.Page
             titreLink.PostBackUrl = "~/forum.aspx?ID=" + (datareader.IsDBNull(3) ? "" : (datareader[3].ToString()));
             titreCell.Controls.Add(titreLink);
 
-
             tableRow.Cells.Add(new TableCell() { Text = datareader.IsDBNull(1) ? "" : ((string)datareader[1]) });
             tableRow.Cells.Add(titreCell);
             tableRow.Cells.Add(new TableCell() { Text = datareader.IsDBNull(2) ? "" : ((DateTime)datareader[2]).ToLongTimeString() });
@@ -58,7 +57,6 @@ public partial class _Default : System.Web.UI.Page
             command.Prepare();
             OleDbDataReader datareader = command.ExecuteReader();
 
-
             int sujet = 1;
             if (datareader.Read())
             {
@@ -73,8 +71,6 @@ public partial class _Default : System.Web.UI.Page
             command.Prepare();
 
             command.ExecuteNonQuery();
-
-
 
             connection.Close();
 

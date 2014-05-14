@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="PageAdmin.aspx.cs" Inherits="Default2" %>
 
-
 <asp:Content ContentPlaceHolderID="body" runat="server">
-     <%if(Session["id"] != null && IsAdministrator()){%>
+    <%if (Session["id"] != null && IsAdministrator())
+      {%>
 
     <asp:GridView ID="gridUsers" runat="server" AutoGenerateColumns="False" DataKeyNames="nom_utilisateur" DataSourceID="SqlMainDataSource" AutoGenerateEditButton="true" AllowSorting="True">
         <Columns>
@@ -38,7 +38,8 @@
         </UpdateParameters>
     </asp:SqlDataSource>
 
-    <%}else{%>
+    <%}
+      else
+      {%>
     <%}%>
 </asp:Content>
-

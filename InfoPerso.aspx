@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="InfoPerso.aspx.cs" Inherits="Default2" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <title>Information Personnelle</title>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
     <%if (Session["id"] == null)
       { %>
     <label>veullier vous connecter pour contiuer</label>
@@ -19,24 +19,24 @@
       { %>
     <div>
 
-        <asp:Label Text="" runat="server" ID="lblUsername"/>
+        <asp:Label Text="" runat="server" ID="lblUsername" />
 
         <br />
 
-        <asp:Label Text="" runat="server" id="lblEmail"/>
+        <asp:Label Text="" runat="server" ID="lblEmail" />
 
-        <asp:Label Text="" runat="server" ID="lblModoOuAdmin"/>
+        <asp:Label Text="" runat="server" ID="lblModoOuAdmin" />
 
         <br />
 
         <asp:Label Text="" runat="server" ID="lblsucces" CssClass="label-success" />
 
-        <asp:Image ImageUrl="#" runat="server" ID="imgAvatar" class="pull-right"/>
+        <asp:Image ImageUrl="#" runat="server" ID="imgAvatar" class="pull-right" />
 
         <asp:FileUpload
             runat="server"
             ID="fileUpload1" />
-        <asp:RequiredFieldValidator 
+        <asp:RequiredFieldValidator
             ID="RequiredFieldValidator1"
             runat="Server"
             ControlToValidate="fileUpload1"
@@ -59,6 +59,4 @@
     </div>
 
     <%} %>
-
 </asp:Content>
-

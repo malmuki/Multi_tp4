@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Data.OleDb;
 using System.Configuration;
+using System.Data.OleDb;
 using System.Security.Cryptography;
 
 public partial class Default2 : System.Web.UI.Page
@@ -22,16 +22,15 @@ public partial class Default2 : System.Web.UI.Page
 
             rdmSel.GetBytes(tabSels);  //Creation du sel aléatoire
 
-
             Rfc2898DeriveBytes hash = new Rfc2898DeriveBytes(mdp, tabSels, 1000);
 
             byte[] password = hash.GetBytes(24);  //Obtention du mot de passe crypté
-            
+
             OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
             connection.Open();
 
             OleDbCommand command = new OleDbCommand(" SELECT Count(nom_utilisateur) FROM Utilisateurs WHERE nom_utilisateur = @userName;", connection);
-            command.Parameters.Add(new OleDbParameter("userName", userName) {OleDbType = OleDbType.VarChar, Size = 255 });
+            command.Parameters.Add(new OleDbParameter("userName", userName) { OleDbType = OleDbType.VarChar, Size = 255 });
             command.Prepare();
 
             if ((int)command.ExecuteScalar() < 1)
@@ -52,13 +51,11 @@ public partial class Default2 : System.Web.UI.Page
                 command.ExecuteNonQuery();
             }
 
-            
-
-            
             connection.Close();
             Server.Transfer("Default.aspx");
         }
     }
+
     protected void imageValidator_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
     {
         if (fileUpload.HasFile)
@@ -75,7 +72,6 @@ public partial class Default2 : System.Web.UI.Page
             {
                 args.IsValid = false;
             }
-            
         }
     }
 }

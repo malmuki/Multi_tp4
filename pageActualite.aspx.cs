@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Web.UI.WebControls;
-using System.Data.OleDb;
 using System.Configuration;
+using System.Data.OleDb;
 using System.Web.UI.HtmlControls;
+using System.Web.UI.WebControls;
 
 public partial class pageActualite : System.Web.UI.Page
 {
@@ -29,7 +29,7 @@ public partial class pageActualite : System.Web.UI.Page
             avatar.ImageUrl = "~/assets/image/" + (string)datareader[3];
             imgDiv.Controls.Add(avatar);
             pseudoDiv.InnerText = (string)datareader[2];
-            pseudoDiv.Style.Add("text-align","center");
+            pseudoDiv.Style.Add("text-align", "center");
             userCell.Controls.Add(imgDiv);
             userCell.Controls.Add(pseudoDiv);
 
@@ -41,26 +41,27 @@ public partial class pageActualite : System.Web.UI.Page
         connection.Close();
     }
 
-   public bool IsModerator()
+    public bool IsModerator()
     {
-         OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
+        OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
         connection.Open();
 
-        OleDbCommand command = new OleDbCommand("SELECT moderateur FROM Utilisateurs WHERE nom_utilisateur='"+(string)Session["id"]+"';", connection);
-       OleDbDataReader datareader = command.ExecuteReader();
+        OleDbCommand command = new OleDbCommand("SELECT moderateur FROM Utilisateurs WHERE nom_utilisateur='" + (string)Session["id"] + "';", connection);
+        OleDbDataReader datareader = command.ExecuteReader();
 
-       if (datareader.Read())
-       {
-           return (bool) datareader[0];
-       }
-       else
-       {
-           return false;
-       }
+        if (datareader.Read())
+        {
+            return (bool)datareader[0];
+        }
+        else
+        {
+            return false;
+        }
     }
-   protected void btnEnvoyerMessage_Click(object sender, EventArgs e)
-   {
-       OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
+
+    protected void btnEnvoyerMessage_Click(object sender, EventArgs e)
+    {
+        OleDbConnection connection = new OleDbConnection(ConfigurationManager.ConnectionStrings["GeneralDatabase"].ConnectionString);
         connection.Open();
 
         OleDbCommand command = new OleDbCommand("INSERT INTO messages (sujet, auteur, date_ecriture, message) VALUES (@sujet, @auteur, @date, @message)", connection);
@@ -70,10 +71,10 @@ public partial class pageActualite : System.Web.UI.Page
             OleDbType = OleDbType.Integer
         });
 
-
         command.Parameters.Add(new OleDbParameter("auteur", Session["id"])
         {
-            OleDbType = OleDbType.VarChar, Size = 255
+            OleDbType = OleDbType.VarChar,
+            Size = 255
         });
 
         command.Parameters.Add(new OleDbParameter("date", DateTime.Now)
@@ -81,14 +82,14 @@ public partial class pageActualite : System.Web.UI.Page
             OleDbType = OleDbType.Date
         });
 
-
         command.Parameters.Add(new OleDbParameter("message", txtActualite.Text)
         {
-            OleDbType = OleDbType.VarChar, Size = 65536 //Changer le nombre de caracteres pour un text long.
+            OleDbType = OleDbType.VarChar,
+            Size = 65536 //Changer le nombre de caracteres pour un text long.
         });
 
         command.ExecuteNonQuery();
         connection.Close();
-       Response.Redirect("pageActualite.aspx");
-   }
+        Response.Redirect("pageActualite.aspx");
+    }
 }

@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
     <div>
-        <asp:Button ID="buttonLock" runat="server" Text="Fermer le sujet" CssClass="btn" OnClick="buttonLock_Click" CausesValidation="false"/>
+        <asp:Button ID="buttonLock" runat="server" Text="Fermer le sujet" CssClass="btn" OnClick="buttonLock_Click" CausesValidation="false" />
         <asp:Label Text="" runat="server" ID="lblSuccess" />
         <asp:Label runat="server" Text="" ID="lblSujet"></asp:Label>
         <asp:Table runat="server" ID="menuMessage" CssClass="maxWidth">
