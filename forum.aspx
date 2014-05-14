@@ -6,6 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="Server">
     <div>
+          <asp:Button id="buttonLock" runat="server" Text="Fermer le sujet" CssClass="buttonLock" OnClick="buttonLock_Click"/>
         <asp:Label Text="" runat="server" ID="lblSuccess" />
         <asp:Label runat="server" Text="" ID="lblSujet"></asp:Label>
         <asp:Table runat="server" ID="menuMessage" CssClass="maxWidth">
@@ -21,6 +22,8 @@
           {%>
         <div style="text-align: center" Width="70%">
             <asp:TextBox TextMode="MultiLine" runat="server" Height="100" ID="txtReponseMessage" CssClass="center"></asp:TextBox><br/>
+                        <asp:label runat="server" ID="instruction" Text="*pour modifier un message il faut entrer le nouveau contenue dans cette texte box et appuyer sur le bouton désiré."></asp:label>
+
             <asp:Button runat="server" ID="btnEnvoyerMessage" Text="Envoyer" OnClick="btnEnvoyerMessage_Click" CssClass="btn center"/>
         </div>
         <%}
